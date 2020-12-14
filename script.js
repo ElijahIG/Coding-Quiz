@@ -1,24 +1,54 @@
-function startTimer(duration, display) {
-  var timer = duration,
-    minutes,
-    seconds;
-  setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
+const startButton = document.getElementById("start-btn");
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+const questionElement = document.getElementById("question");
+const answerButtonsElement = document.getElementById("answer-buttons");
 
-    display.textContent = minutes + ":" + seconds;
+let shuffledQuestions, currentQuestionIndex;
 
-    if (--timer < 0) {
-      timer = duration;
+startButton.addEventListener("click", startGame);
+
+function startGame() {
+  console.log("Started");
+  startButton.classList.add("hide");
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  questionContainerElement.classList.remove("hide");
+  setNextQuestion();
+}
+
+function setNextQuestion() {
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function showQuestion() {
+  questionElement.innerText = question.question;
+}
+
+function selectAnswer() {}
+
+const questions = [
+  {
+    question: "What is javascript",
+    answers: [
+      { text: "Coding language", correct: true },
+      { text: "Starbucks drink", correct: false },
+    ],
+  },
+];
+
+var counter = 60;
+function startQuiz() {
+  var x = setInterval(function () {
+    counter--;
+    if (counter >= 0) {
+      id = document.getElementById("timer");
+      id.innerHTML = counter;
+    } else if (counter < 0) {
+      clearInterval(x);
+      id = document.getElementById("timer");
+      id.innerHTML = counter + 61;
+      counter = 60;
+      alert("It works!!!");
     }
   }, 1000);
 }
-
-window.onload = function () {
-  var threeMinutes = 60 * 3,
-    display = document.querySelector("#time");
-  startTimer(threeMinutes, display);
-};
