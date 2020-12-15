@@ -1,42 +1,79 @@
 const startButton = document.getElementById("start-btn");
 
-const questionElement = document.getElementById("question");
+const questionContainer = document.getElementById("question-container");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
-let shuffledQuestions, currentQuestionIndex;
-
-startButton.addEventListener("click", startGame);
-
-function startGame() {
-  console.log("Started");
-  startButton.classList.add("hide");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+let shuffledQuestions,
   currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
-}
-
-function setNextQuestion() {
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
-
-function showQuestion() {
-  questionElement.innerText = question.question;
-}
-
-function selectAnswer() {}
+let counter = 60;
 
 const questions = [
-  {
-    question: "What is javascript",
-    answers: [
-      { text: "Coding language", correct: true },
-      { text: "Starbucks drink", correct: false },
-    ],
-  },
+  [
+    "What is javascript?",
+    "A Coding language",
+    "A Starbucks drink",
+    "A Font",
+    "A city",
+    "A Coding language",
+  ],
+  ["Front end and ______", "Up end", "Numbers", "Back end", "CSS", "Back end"],
+  [
+    "What is used to style a webpage?",
+    "Paint",
+    "CSS",
+    "Pencils",
+    "Photoshop",
+    "CSS",
+  ],
+  [
+    "What goes in a container tag?",
+    "div",
+    "body",
+    "Google Docs",
+    "Your computer",
+    "div",
+  ],
+  [
+    "How can you change the background color in css?",
+    "Change-color",
+    "Make-color",
+    "Background-color",
+    "Photoshop",
+    "Background-color",
+  ],
 ];
 
-var counter = 60;
+function startGame() {
+  showQuestion(currentQuestionIndex);
+}
+
+function showQuestion(index) {
+  function answerClickHandler() {
+    if (this.textContent === questions[index][5]) {
+      alert("correct!");
+    } else {
+      alert("wrong!");
+    }
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= questions.length) {
+      console.log("out of questions");
+    } else {
+      showQuestion(currentQuestionIndex);
+    }
+  }
+  questionContainer.innerHTML = `<div id="question">${questions[index][0]}</div>
+  <div id="answer-buttons" class="btn-grid">
+    <button id="a1" class="btn">${questions[index][1]}</button>
+    <button id="a2" class="btn">${questions[index][2]}</button>
+    <button id="a3" class="btn">${questions[index][3]}</button>
+    <button id="a4" class="btn">${questions[index][4]}</button>
+  </div>`;
+  document.getElementById("a1").addEventListener("click", answerClickHandler);
+  document.getElementById("a2").addEventListener("click", answerClickHandler);
+  document.getElementById("a3").addEventListener("click", answerClickHandler);
+  document.getElementById("a4").addEventListener("click", answerClickHandler);
+}
+
 function startQuiz() {
   var x = setInterval(function () {
     counter--;
@@ -52,3 +89,5 @@ function startQuiz() {
     }
   }, 1000);
 }
+
+startButton.addEventListener("click", startGame);
