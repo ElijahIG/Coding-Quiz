@@ -12,9 +12,13 @@
 
 body {
   --hue: var(--hue-neutral);
-  padding: 0;
+  padding: 0px;
   margin: 0;
   background-color: hsl(var(--hue), 100%, 20%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .container {
@@ -24,9 +28,6 @@ body {
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px 2px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
 }
 
 .btn-grid {
@@ -55,4 +56,8 @@ body {
   font-size: 1, 5rem;
   font-weight: bold;
   padding: 10px 20px;
+}
+
+header {
+  color: white;
 }

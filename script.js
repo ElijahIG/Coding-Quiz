@@ -56,7 +56,7 @@ function showQuestion(index) {
     }
     currentQuestionIndex++;
     if (currentQuestionIndex >= questions.length) {
-      console.log("out of questions");
+      alert("Completed!");
     } else {
       showQuestion(currentQuestionIndex);
     }
@@ -74,7 +74,7 @@ function showQuestion(index) {
   document.getElementById("a4").addEventListener("click", answerClickHandler);
 }
 
-function startQuiz() {
+function () {
   var x = setInterval(function () {
     counter--;
     if (counter >= 0) {
