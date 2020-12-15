@@ -7,3 +7,5 @@ User will be prompted with a series of questions and will have four options to p
 If correct user will be alerted saying "Correct!" and if wrong user will be prompted with "Wrong!"
 
 Game continues until no questions remain
+
+![Coding Quiz](images/Capture.PNG)
