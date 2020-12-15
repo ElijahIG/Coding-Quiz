@@ -74,20 +74,20 @@ function showQuestion(index) {
   document.getElementById("a4").addEventListener("click", answerClickHandler);
 }
 
-// function () {
-//   var x = setInterval(function () {
-//     counter--;
-//     if (counter >= 0) {
-//       id = document.getElementById("timer");
-//       id.innerHTML = counter;
-//     } else if (counter < 0) {
-//       clearInterval(x);
-//       id = document.getElementById("timer");
-//       id.innerHTML = counter + 61;
-//       counter = 60;
-//       alert("It works!!!");
-//     }
-//   }, 1000);
-// }
+function start() {
+  var x = setInterval(function () {
+    counter--;
+    if (counter >= 0) {
+      id = document.getElementById("timer");
+      id.innerHTML = counter;
+    } else if (counter < 0) {
+      clearInterval(x);
+      id = document.getElementById("timer");
+      id.innerHTML = counter + 61;
+      counter = 60;
+      alert("It works!!!");
+    }
+  }, 1000);
+}
 
 startButton.addEventListener("click", startGame);
